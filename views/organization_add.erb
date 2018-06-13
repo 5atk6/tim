@@ -1,0 +1,27 @@
+<div>
+  <form action="/organization/add" method="post">
+    <div>
+      <div>
+        <div class="form-group">
+          <label for="organization_name">Organization Name</label>
+          <input name="name" class="form-control" id="name" placeholder="organization name">
+        </div>
+        <div class="form-group">
+          <label for="organization_content">Content</label>
+          <input name="body" class="form-control" id="content" placeholder="organization activity">
+        </div>
+        <!--organization name : <input name="name" placeholder="please enter organization name"><br>-->
+        <!--organization activity : <input name="body" placeholder="please enter activity content"><br>-->
+        <div class="form-group">
+          <label for="category">Category</label><br>
+          <select name="category" id="category">
+            <% @categories.each do |category| %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>TIM - Tsukuba International Matome</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-inverse" style="background: #ffffff">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1><a class="navbar-brand" href="/">TIM - Tsukuba International Matome</a></h1>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if !current_user.nil? %>
+            <li>Hello <%= current_user.mail %></li>
+            <li><a href="/signout">Sign Out</a></li>
+          <% else %>
+            <li>Do you have account?</li>
+            <li><a href="/signin"><img src="/assets/svg/account-login.svg" alt="login">Sign In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <%= yield %>
+  </div>
+</body>
+
+<center>Copyright © Atsuki Iwai All Rights Reserved.</center>
+</html>

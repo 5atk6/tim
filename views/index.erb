@@ -1,0 +1,62 @@
+<center><a class="btn btn-primary" href="/" role="button" style="margin: 10px">Events</a></center>
+
+<div class="row">
+  <div class="col-md-6">
+    <% @events.each do |event| %>
+      <div class="col-6" style="float: left;">
+        <div class="card" style="margin-top: 10px;">
+          <div class="card-header bg-primary text-white">
+            <%= event.title %>
+          </div>
+          <div class="card-body bg-light">
+            <h5 class="card-title">@<%= event.venue %> From <%= event.start_time %></h5>
+            <p class="card-text"><%= event.content %></p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated <%= event.updated_at %></small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <iframe src="https://calendar.google.com/calendar/embed?src=tsukuba.international.matome%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+  </div>
+</div>
+
+<p><a class="btn btn-success" role="button" href=/event/add style="margin: 10px"> Add Event </a></p>
+
+<center><a class="btn btn-primary" href="/" role="button">Organizations</a></center>
+<div class="row">
+  <% @categories.each do |category| %>
+    <div class="col-md-4" style="margin-top: 10px;">
+      <a class="btn btn-primary" href="/category/<%= category.id %>" role="button"><%= category.name %></a>
+    </div>
+  <% end %>
+</div>
+
+<% if @category_name.present? %>
+  <h2><%= @category_name %></h2>
+<% end %>
+
+<div class="row">
+  <% @organizations.each do |organization| %>
+    <div class="col-md-4">
+      <div class="card" style="margin-top: 10px;">
+        <div class="card-header bg-primary text-white">
+          <%= organization.name %>
+        </div>
+        <div class="card-body bg-light">
+          <h5 class="card-title"><%= organization.category.try(:name) %></h4>
+          <p class="card-text"><%= organization.body %></p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated <%= organization.updated_at %></small>
+      </div>
+    </div>
+  <% end %>
+</div>
+  
+
+<p><a class="btn btn-success" role="button" href=/organization/add style="margin: 10px"> Add Organization </a></p>

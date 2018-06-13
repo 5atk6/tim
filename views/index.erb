@@ -1,3 +1,5 @@
+<hr>
+
 <center><a class="btn btn-primary" href="/" role="button" style="margin: 10px">Events</a></center>
 
 <div class="row">
@@ -26,11 +28,13 @@
 
 <p><a class="btn btn-success" role="button" href=/event/add style="margin: 10px"> Add Event </a></p>
 
+<hr>
+
 <center><a class="btn btn-primary" href="/" role="button">Organizations</a></center>
 <div class="row">
   <% @categories.each do |category| %>
     <div class="col-md-4" style="margin-top: 10px;">
-      <a class="btn btn-primary" href="/category/<%= category.id %>" role="button"><%= category.name %></a>
+      <center><a class="btn-category" href="/category/<%= category.id %>" role="button"><%= category.name %></a></center>
     </div>
   <% end %>
 </div>
@@ -44,10 +48,10 @@
     <div class="col-md-4">
       <div class="card" style="margin-top: 10px;">
         <div class="card-header bg-primary text-white">
-          <%= organization.name %>
+          <a href="<%= organization.url %>" target=”_blank” style="color: #ffffff"><%= organization.name %></a> 
         </div>
         <div class="card-body bg-light">
-          <h5 class="card-title"><%= organization.category.try(:name) %></h4>
+          <h5 class="card-title"><%= organization.category.try(:name) %></h5>
           <p class="card-text"><%= organization.content %></p>
         </div>
       </div>

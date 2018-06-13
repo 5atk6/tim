@@ -84,7 +84,8 @@ end
 post '/organization/add' do
   Organization.create({
     name: params[:name],
-    body: params[:body],
+    content: params[:content],
+    url: params[:url],
     category_id: params[:category]
   })
   
@@ -104,8 +105,7 @@ post '/event/add' do
     title: params[:title],
     content: params[:content],
     venue: params[:venue],
-    start_time: Date.parse(params[:start_time]),
-    active_time: params[:active_time]
+    start_time: Date.parse(params[:start_time])
   })
   
   redirect '/'

@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20180611015421) do
     t.string   "title"
     t.text     "content"
     t.string   "venue"
+    t.string   "url"
     t.time     "start_time"
-    t.time     "active_time"
+    t.time     "end_time"
     t.integer  "user_id"
     t.integer  "organization_id"
     t.datetime "created_at",      null: false
@@ -33,8 +34,9 @@ ActiveRecord::Schema.define(version: 20180611015421) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
+    t.text     "content"
+    t.string   "url"
     t.integer  "user_id"
-    t.string   "body"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

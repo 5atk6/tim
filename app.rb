@@ -6,6 +6,7 @@ require 'sinatra/activerecord'
 require './models'
 require 'securerandom'
 require 'pony'
+require 'googleauth'
 
 enable :sessions
 
@@ -28,12 +29,16 @@ end
 
 post '/signup' do
   random_password = SecureRandom.base64(8)
-  user = User.create(
-    mail: params[:mail],
-    password: random_password
-    )
-  if user.persisted?
-    session[:user] = user.id
+  if User.exists?(:mail => params[:mail]) then
+    user = User.find_by(mail: params[:mail])
+    user.update({
+      password: random_password
+    })
+  else
+    user = User.create(
+      mail: params[:mail],
+      password: random_password
+      )
   end
   
   Pony.mail({
@@ -64,11 +69,13 @@ post '/signin' do
   if user && user.authenticate(params[:password])
     session[:user] = user.id
   end
+  
   redirect '/'
 end
 
 get '/signout' do
   session[:user] = nil
+  
   redirect '/'
 end
 
@@ -118,4 +125,38 @@ get '/category/:id' do
   @organizations = @category.organizations
   @events        = Event.all
   erb :index
+end
+
+get '/opinion' do
+  @opinions = Opinion.all
+  @ideas   = Idea.all
+  erb :opinion
+end
+
+post '/opinion' do
+  Opinion.create({
+    comment: params[:comment]
+  })
+  
+  redirect '/opinion'
+end
+
+post '/idea' do
+  Idea.create({
+    title: params[:title],
+    comment: params[:comment],
+    good: 0
+  })
+  
+  redirect '/opinion'
+end
+  
+post '/idea/good/:id' do
+  @idea = Idea.find(params[:id])
+  good = @idea.good
+  @idea.update({
+    good: good + 1
+  })
+  
+  redirect '/opinion'
 end

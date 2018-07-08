@@ -23,3 +23,11 @@ end
 class Event < ActiveRecord::Base
   
 end
+
+class Opinion < ActiveRecord::Base
+  
+end
+
+class Idea < ActiveRecord::Base
+  
+end

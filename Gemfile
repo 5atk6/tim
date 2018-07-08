@@ -11,6 +11,8 @@ gem 'bcrypt'
 
 gem 'pony'
 
+gem 'googleauth'
+
 group :development do
   gem 'sqlite3'
 end

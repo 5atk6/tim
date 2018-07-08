@@ -1,9 +1,21 @@
+
+<a role="button" href="/opinion">
+  <div class="card bg-info">
+    <div class="card-block">
+      <h2 style="color: white">Notice!</h2>
+      <p style="color: white">This is Beta version. Please give me advice and opinion!</p>
+      <p style="color: white">And I accept idea of this web site name!</p>   
+      <p style="color: white">If you have, please click this window, and give me your opinions!</p>
+    </div>
+  </div>
+</a>
+
 <center><a class="btn btn-primary" href="/" role="button" style="margin: 10px"><h4>Events</h4></a></center>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-12 col-xs-12 col-sm-12 col-md-6">
     <% @events.each do |event| %>
-      <div class="col-6" style="float: left;">
+      <div class="col-md-6" style="float: left;">
         <div class="card" style="margin-top: 10px;">
           <div class="card-header bg-primary text-white">
             <%= event.title %>
@@ -19,8 +31,8 @@
       </div>
     <% end %>
   </div>
-  <div class="col-md-6">
-    <iframe src="https://calendar.google.com/calendar/embed?src=tsukuba.international.matome%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+  <div class="col-12 col-xs-12 col-sm-12 col-md-6">
+    <iframe src="https://calendar.google.com/calendar/embed?src=tsukuba.international.matome%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="500px" frameborder="0" scrolling="no"></iframe>
   </div>
 </div>
 
